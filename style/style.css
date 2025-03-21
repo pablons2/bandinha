@@ -1,0 +1,33 @@
+@theme {
+    --color-clifford: #da373d;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+*{
+   
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.bg-ejc{
+    background-color: #D1AF6E;
+}
+.estilo-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(227, 227, 227, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: auto;
+  flex-direction: column;
+}

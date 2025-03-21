@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Musicas Ensaio Bandinha</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bahiana&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orienta&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <main class="w-screen flex h-screen flex-col">
+      <header class="flex justify-center items-center flex-col pt-8 pb-2">
+        <img
+          src="../imgs/ejc -.svg"
+          alt="logo do EJC VERGEL-ALAGOAS"
+          class="w-[160px] h-[160px]"
+        />
+        <div class="flex justify-center flex-col items-center">
+          <span class="text-amber-950 font-bold">MÚSICAS BANDINHA</span>
+          <span class="text-amber-950 font-medium">Para Ensaio</span>
+        </div>
+      </header>
+      <section
+        class="w-full h-[140px] flex justify-center items-center px-4 flex-col gap-3"
+      >
+        <input
+          type="text"
+          placeholder="DIGITE O NOME DA MÚSICA"
+          class="text-[16pt] w-full border-2 border-amber-950 h-[48px] rounded-lg text-gray-400"
+        />
+        <button
+          onclick="listarMusicas()"
+          class="hover:bg-white hover:border-1 hover:border-amber-950 hover:cursor-pointer hover:text-amber-950 text-[16pt] flex items-center justify-center text-white bg-amber-950 h-[48px] gap-5 w-[60%]"
+        >
+          <i class="bi bi-play-circle-fill"></i><span>ENCONTRAR</span>
+        </button>
+      </section>
+      <hr class="w-full my-2 shadow text-gray-300" />
+      <section>
+        <ul class="w-full flex justify-center flex-col items-center">
+          <!-- Aqui entrará a lista de músicas via JavaScript -->
+        </ul>
+      </section>
+    </main>
+
+    <!-- Modal para exibir a letra da música -->
+    <div
+    class="hidden inset-0 w-full h-full bg-white z-[200] overflow-y-auto p-4 fixed"
+    id="modal"
+  >
+    <header class="flex justify-end pe-4">
+      <button
+        class="text-amber-950 font-medium text-[38px] text-red-600 hover:text-red-800"
+        onclick="fecharModal()"
+      >
+        X
+      </button>
+    </header>
+    <h2 class="text-600 mt-4 font-semibold text-[24px] flex justify-center items-center">
+      {titulo}
+    </h2>
+    <p class="flex justify-center items-center grow text-[16pt] whitespace-pre-line p-4">
+      {letra}
+    </p>
+    <footer class="flex justify-center h-[50px] mt-4">
+      <button
+        class="text-[16pt] cursor-pointer flex items-center justify-center text-white bg-amber-950 h-[48px] gap-5 w-[60%] hover:bg-amber-900"
+        onclick="fecharModal()"
+      >
+        <i class="bi bi-play-circle-fill"></i><span>Pesquisar Outra</span>
+      </button>
+    </footer>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="../scripts/script.js"></script>
+  </body>
+</html>
