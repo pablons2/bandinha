@@ -4,17 +4,26 @@
 let musicas = []; // Armazenará as músicas carregadas do JSON
 let modal = document.getElementById("modal"); // Modal para exibir a letra da música
 
-// Função para carregar as músicas do arquivo JSON
+// Função para gerar um parâmetro de cache busting
+function gerarCacheBuster() {
+    // Usa a data atual em milissegundos para garantir um valor único
+    return `?v=${new Date().getTime()}`;
+}
+
+// Função para carregar as músicas do arquivo JSON com cache busting
 async function carregarMusicas() {
   try {
-    const response = await fetch("../api/musicas.json"); 
+    // Adiciona o parâmetro de cache busting à URL
+    const url = `../api/musicas.json${gerarCacheBuster()}`;
+    const response = await fetch(url); 
     if (!response.ok) {
       throw new Error("Erro ao carregar as músicas");
     }
     musicas = await response.json(); // Converte a resposta em JSON
-   
+    console.log('Músicas carregadas com sucesso!');
   } catch (error) {
-   
+    console.error('Erro ao carregar músicas:', error);
+    // Você pode adicionar aqui uma mensagem de erro para o usuário
   }
 }
 
@@ -73,6 +82,16 @@ function fecharModal() {
 
 // Carrega as músicas ao iniciar a página
 document.addEventListener("DOMContentLoaded", () => {
+  // Limpa o cache antes de carregar as músicas
+  if ('caches' in window) {
+    caches.keys().then(function(names) {
+      for (let name of names) {
+        if (name.includes('musicas.json')) {
+          caches.delete(name);
+        }
+      }
+    });
+  }
+  
   carregarMusicas();
 });
-
