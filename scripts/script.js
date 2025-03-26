@@ -7,12 +7,12 @@ let modal = document.getElementById("modal"); // Modal para exibir a letra da m�
 // Função para carregar as músicas do arquivo JSON
 async function carregarMusicas() {
   try {
-    const response = await fetch("../api/musicas.json"); 
+    const response = await fetch("musicas.json"); 
     if (!response.ok) {
       throw new Error("Erro ao carregar as músicas");
     }
     musicas = await response.json(); // Converte a resposta em JSON
-   
+   console.log( musicas, 'MUSICAS')
   } catch (error) {
    
   }
@@ -30,7 +30,7 @@ function listarMusicas() {
   // Filtra as músicas pelo título
   const musicasFiltradas = musicas.filter((musica) =>
     musica.titulo.toLowerCase().includes(termo)
-  );
+  ).sort((a, b) => a.numero - b.numero);
 
   // Adiciona as músicas filtradas à lista
   musicasFiltradas.forEach((musica, index) => {
